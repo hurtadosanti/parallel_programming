@@ -1,0 +1,1 @@
+docker run -d -e RABBITMQ_DEFAULT_USER=queue_user -e RABBITMQ_DEFAULT_PASS=queue_password rabbitmq:3-management
