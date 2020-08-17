@@ -1,5 +1,36 @@
 # ParallelProgramming
 ## Flynn's Taxonomy
+
+- SISD (Singe Instruction Single Data)
+- SIMD (Singe Instruction Multiple Data) 
+- MISD (Multiple Instruction Single Data) * Not common
+- MIMD (Multiple Instruction Multiple Data)
+    - Single Program, Multiple Data(SPMD) 
+    - Multiple Program multiple data(MPMD) Manager and workers
+
+## Memory
+ - Shared Memory 
+### UMA(Uniform memory access)    
+#### Architecture:
+    - Symmetric Multiprocessing(SMP))
+#### Challenges
+- Cache coherency
+
+### NUMA(Non Uniform memory access)
+Multiple processors sockets
+
+### Distributed Memory Architecture
+Best for using cheap software
+
+
+
+
+
+
+
+
+# ParallelProgramming
+## Flynn's Taxonomy
 - SIMD
 - MIMD
 - UMA vs NUMA
