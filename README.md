@@ -22,19 +22,6 @@ Multiple processors sockets
 ### Distributed Memory Architecture
 Best for using cheap software
 
-
-
-
-
-
-
-
-# ParallelProgramming
-## Flynn's Taxonomy
-- SIMD
-- MIMD
-- UMA vs NUMA
-
 ## Concurrency
 Ability of a program to be broken into parts that can run independently of each other.
 
