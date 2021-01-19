@@ -8,3 +8,6 @@ target_link_libraries(${PROJECT_NAME} pthread)
 
 add_executable(scheduling_demo scheduling_demo.cpp)
 target_link_libraries(scheduling_demo pthread)
+
+add_executable(monitor monitor.cpp)
+target_link_libraries(monitor pthread)
