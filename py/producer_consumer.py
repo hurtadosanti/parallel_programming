@@ -5,6 +5,7 @@ import time
 serving_line = queue.Queue(maxsize=5)
 consumers = 2
 
+
 def service_producer():
     for i in range(20):
         serving_line.put_nowait(f'item {i}')
@@ -13,7 +14,7 @@ def service_producer():
 
     for i in range(consumers):
         serving_line.put_nowait('eoq')
-
+    
 
 def service_consumer():
     while True:
