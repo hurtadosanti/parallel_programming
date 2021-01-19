@@ -3,26 +3,36 @@
 //
 #include <thread>
 #include <mutex>
+#include <condition_variable>
 
 int remaining = 10;
+int threads_count = 5;
 std::mutex lid;
+std::condition_variable consumed;
 
 void consumer(int id){
     int return_lid = 0;
     while(remaining>0){
         std::unique_lock<std::mutex> lid_lock(lid);
-        if((id == remaining%2)&&(remaining>0)){
-            remaining --;
-        }else{
+        while((id != remaining%threads_count)&&(remaining>0)){
             return_lid++;
+            consumed.wait(lid_lock);
+        }
+        if(remaining>0){
+            remaining --;
+            lid_lock.unlock();
+            // gets block for more than 2
+            //consumed.notify_one();
+            consumed.notify_all();
         }
     }
     printf("Consumer %d blocked %u times \n",id,return_lid);
 }
 
 int main(){
-    std::thread consumers[2];
-    for(int i =0;i<2;i++){
+
+    std::thread consumers[threads_count];
+    for(int i =0;i<threads_count;i++){
         consumers[i] = std::thread(consumer,i);
     }
     for(auto &c:consumers){
