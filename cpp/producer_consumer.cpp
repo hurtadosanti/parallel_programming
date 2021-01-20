@@ -3,19 +3,30 @@
 //
 #include <thread>
 #include <queue>
+#include <mutex>
+#include <condition_variable>
 
 class Server{
 public:
     void prepare(int i){
+        std::unique_lock<std::mutex> lidl_lock(lidl);
         processes.push(i);
+        lidl_lock.unlock();
+        process_ready.notify_one();
     }
     int take(){
+        std::unique_lock<std::mutex> lidl_lock(lidl);
+        while (processes.empty()){
+            process_ready.wait(lidl_lock);
+        }
         int process = processes.front();
         processes.pop();
         return process;
     }
 private:
     std::queue<int> processes;
+    std::mutex lidl;
+    std::condition_variable process_ready;
 };
 
 Server server = Server();
@@ -33,7 +44,7 @@ void consumer(){
     while (true){
         int process = server.take();
         if(process==-1){
-            printf("Consumer processed %d elements",processed);
+            printf("Consumer processed %d elements\n",processed);
             // give a last element for other consumers
             server.prepare(-1);
             return;
