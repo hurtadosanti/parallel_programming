@@ -11,3 +11,6 @@ target_link_libraries(scheduling_demo pthread)
 
 add_executable(monitor monitor.cpp)
 target_link_libraries(monitor pthread)
+
+add_executable(producer_consumer producer_consumer.cpp)
+target_link_libraries(producer_consumer pthread)

@@ -9,7 +9,7 @@ consumers = 2
 def service_producer():
     for i in range(20):
         serving_line.put_nowait(f'item {i}')
-        print(f'serve {i} remaining capacity {serving_line.maxsize - serving_line.qsize()}')
+        print(f'prepare {i} remaining capacity {serving_line.maxsize - serving_line.qsize()}')
         time.sleep(0.2)
 
     for i in range(consumers):
