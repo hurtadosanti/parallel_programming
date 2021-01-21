@@ -1,2 +1,2 @@
 # Parallel Programming
-This repository purpose is to present topics and example when development parallel aplications, either in Python, C++ or Cuda
+This repository's purpose is to present topics and examples when developing parallel applications, either in Python, C++, or Cuda.
