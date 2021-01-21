@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16)
 project(ParallelProgramming)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 add_executable(${PROJECT_NAME} main.cpp)
 target_link_libraries(${PROJECT_NAME} pthread)
@@ -17,3 +17,6 @@ target_link_libraries(producer_consumer pthread)
 
 add_executable(data_race data_race.cpp)
 target_link_libraries(data_race pthread)
+
+add_executable(ping_pong_semaphore ping_pong_semaphore.cpp)
+target_link_libraries(ping_pong_semaphore ping_pong_semaphore.cpp)
