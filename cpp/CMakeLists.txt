@@ -14,3 +14,6 @@ target_link_libraries(monitor pthread)
 
 add_executable(producer_consumer producer_consumer.cpp)
 target_link_libraries(producer_consumer pthread)
+
+add_executable(data_race data_race.cpp)
+target_link_libraries(data_race pthread)
