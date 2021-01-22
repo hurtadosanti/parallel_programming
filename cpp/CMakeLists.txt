@@ -17,6 +17,6 @@ target_link_libraries(producer_consumer pthread)
 
 add_executable(data_race data_race.cpp)
 target_link_libraries(data_race pthread)
-
-add_executable(ping_pong_semaphore ping_pong_semaphore.cpp)
-target_link_libraries(ping_pong_semaphore ping_pong_semaphore.cpp)
+#gcc-11
+#add_executable(ping_pong_semaphore ping_pong_semaphore.cpp)
+#target_link_libraries(ping_pong_semaphore pthread)
