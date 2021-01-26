@@ -1,8 +1,5 @@
-FROM ubuntu:20.04
-ENV TZ=Europe/Berlin
-ENV DEBIAN_FRONTEND=noninteractive 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN apt-get -qq update && apt-get -yqq install wget && apt-get clean
+FROM clearlinux
+RUN swupd bundle-add wget
 
 WORKDIR /opt/intel
 
