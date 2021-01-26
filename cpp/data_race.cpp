@@ -2,6 +2,7 @@
 // Created by shurtado on 1/21/2021.
 //
 
+#include <iostream>
 #include <thread>
 #include <mutex>
 #include <chrono>
@@ -26,6 +27,7 @@ void count(){
     // Greater than 10000 will cause a data race
     for(unsigned int i=0;i<100;++i) {
         printf("Thread waiting %d\n", std::this_thread::get_id());
+        std::cout<<"Thread waiting "<< std::this_thread::get_id()<<std::endl;
         std::this_thread::sleep_for(std::chrono::microseconds(200));
         lock.lock();
         counter++;

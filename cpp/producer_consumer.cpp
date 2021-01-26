@@ -9,15 +9,15 @@
 class Server{
 public:
     void prepare(int i){
-        std::unique_lock<std::mutex> lidl_lock(lidl);
+        std::unique_lock<std::mutex> lock(lidl);
         processes.push(i);
-        lidl_lock.unlock();
+        lock.unlock();
         process_ready.notify_one();
     }
     int take(){
-        std::unique_lock<std::mutex> lidl_lock(lidl);
+        std::unique_lock<std::mutex> lock(lidl);
         while (processes.empty()){
-            process_ready.wait(lidl_lock);
+            process_ready.wait(lock);
         }
         int process = processes.front();
         processes.pop();
