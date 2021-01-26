@@ -65,4 +65,4 @@ if __name__ == "__main__":
 
 
 def test_numpy_dot(benchmark):
-    m.multiply()
+    benchmark(m.multiply)
