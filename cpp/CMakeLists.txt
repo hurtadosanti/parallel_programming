@@ -20,3 +20,9 @@ target_link_libraries(data_race pthread)
 #gcc-11
 #add_executable(ping_pong_semaphore ping_pong_semaphore.cpp)
 #target_link_libraries(ping_pong_semaphore pthread)
+
+add_executable(atomic_object atomic_object.cpp)
+target_link_libraries(atomic_object pthread)
+
+add_executable(recursive_mutex recursive_mutex.cpp)
+target_link_libraries(recursive_mutex pthread)
