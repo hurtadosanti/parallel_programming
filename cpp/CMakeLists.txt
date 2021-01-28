@@ -26,3 +26,6 @@ target_link_libraries(atomic_object pthread)
 
 add_executable(recursive_mutex recursive_mutex.cpp)
 target_link_libraries(recursive_mutex pthread)
+
+add_subdirectory(tests)
+enable_testing()

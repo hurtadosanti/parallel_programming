@@ -16,7 +16,7 @@ void lock_count(){
     // Greater than 10000 will cause a data race
     lock.lock();
     for(unsigned int i=0;i<100;++i) {
-        printf("Thread waiting %d\n", std::this_thread::get_id());
+        std::cout<<"Thread id:"<<std::this_thread::get_id()<<std::endl;
         std::this_thread::sleep_for(std::chrono::microseconds(200));
         counter++;
     }
@@ -26,7 +26,6 @@ void lock_count(){
 void count(){
     // Greater than 10000 will cause a data race
     for(unsigned int i=0;i<100;++i) {
-        printf("Thread waiting %d\n", std::this_thread::get_id());
         std::cout<<"Thread waiting "<< std::this_thread::get_id()<<std::endl;
         std::this_thread::sleep_for(std::chrono::microseconds(200));
         lock.lock();

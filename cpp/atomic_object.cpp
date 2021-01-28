@@ -16,7 +16,7 @@ void counter(){
 int main(){
     std::thread t1(counter);
     std::thread t2(counter);
-    t1.join():
-    t2.join():
+    t1.join();
+    t2.join();
     std::cout<<"counter:"<<count.load()<<std::endl;
 }

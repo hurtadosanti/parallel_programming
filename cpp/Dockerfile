@@ -6,9 +6,8 @@ RUN apt-get install -yqq gcc g++ cmake git
 WORKDIR /opt
 RUN git clone https://github.com/google/benchmark.git \
     && git clone https://github.com/google/googletest.git benchmark/googletest \
-    && cd benchmark && cmake -E make_directory "build" &&  \
+    && cd benchmark && cmake -E make_directory "build" \
     && cmake -DCMAKE_BUILD_TYPE=Release -S . -B "build" \
-    && cmake --build "build" --config Release \
     && cmake --build "build" --config Release --target install
 
 # Files to copy
@@ -23,10 +22,7 @@ RUN git clone https://github.com/google/benchmark.git \
 #    -- Installing: /usr/local/lib/cmake/benchmark/benchmarkTargets-release.cmake
 
 
-#FROM ubuntu:20.04
-#RUN apt-get -qq update && apt -yqq upgrade
-#RUN apt-get install -yqq gcc g++ cmake
-#WORKDIR /opt/buid
-#COPY CMakeLists.txt /opt/
-#COPY *.cpp /opt/
-#RUN cmake .. && make
+WORKDIR /opt/buid
+COPY CMakeLists.txt /opt/
+COPY *.cpp /opt/
+RUN cmake .. && make
