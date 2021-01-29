@@ -14,6 +14,7 @@ void counter(){
 }
 
 int main(){
+    printf("Starting\n");
     std::thread t1(counter);
     std::thread t2(counter);
     t1.join();

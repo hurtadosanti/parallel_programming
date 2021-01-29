@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
-project(TestsParallelProgramming)
+project(tests)
 
 find_package(benchmark REQUIRED)
-add_executable(tests_multithread_primes tests_multithread_primes.cpp)
-target_link_libraries(tests_multithread_primes benchmark::benchmark)
+add_executable(benchmark_samples benchmark_samples.cpp)
+target_link_libraries(benchmark_samples benchmark::benchmark parallel_programming_samples)

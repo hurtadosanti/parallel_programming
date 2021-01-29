@@ -42,6 +42,7 @@ void atomic_count(){
 }
 
 int main(){
+    printf("Starting\n");
     //std::thread c1(count);
     //std::thread c2(count);
     std::thread c1(atomic_count);
