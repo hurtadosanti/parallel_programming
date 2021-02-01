@@ -13,6 +13,14 @@ TEST(MultithreadNaturalNumbers, IsPrime) {
     ASSERT_TRUE(pm.is_prime(71));
     ASSERT_TRUE(pm.is_prime(7919));
 }
+
+TEST(MultithreadNaturalNumbers, SumOfPrimes) {
+
+    auto pm = Samples::ParallelMath();
+    ASSERT_EQ(1060,pm.calculate_sum_primes(100));
+    ASSERT_EQ(76127,pm.calculate_sum_primes(1000));
+
+}
 TEST(MultithreadNaturalNumbers, IsNotPrime) {
 
     auto pm = Samples::ParallelMath();

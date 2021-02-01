@@ -19,3 +19,13 @@ bool Samples::ParallelMath::is_prime(int number) {
     return true;
 }
 
+double Samples::ParallelMath::calculate_sum_primes(const size_t size) {
+    auto result = 0.0;
+    for(size_t i=0;i<size;++i){
+        if(is_prime(i)){
+            result+=i;
+        }
+    }
+    return result;
+}
+
