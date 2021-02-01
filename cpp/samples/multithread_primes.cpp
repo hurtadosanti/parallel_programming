@@ -1,6 +1,4 @@
 #include <iostream>
-#include <boost/asio.hpp>
-#include <boost/lockfree/queue.hpp>
 #include <thread>
 #include <string>
 #include <cmath>
@@ -25,22 +23,6 @@ int main(int argc, char **args) {
     double sum = 0;
     if (argc == 2) {
         size = std::stoi(args[1]);
-    }
-
-    boost::asio::thread_pool pool(std::thread::hardware_concurrency());
-    boost::lockfree::queue<unsigned int> results(size);
-
-    for (unsigned int i = 0; i < size; i++) {
-        boost::asio::post(pool, [&results, i]() {
-            if (is_prime(i)) {
-                results.push(i);
-            }
-        });
-    }
-    pool.join();
-    unsigned int value;
-    while (results.pop(value)) {
-        sum += value;
     }
     std::cout << sum << std::endl;
     return 0;

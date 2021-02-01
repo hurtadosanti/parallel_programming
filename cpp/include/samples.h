@@ -1,0 +1,8 @@
+//
+// Created by shurtado on 1/30/2021.
+//
+
+#ifndef PARALLEL_PROGRAMMING_SAMPLES_H
+#define PARALLEL_PROGRAMMING_SAMPLES_H
+
+#endif //PARALLEL_PROGRAMMING_SAMPLES_H
