@@ -18,7 +18,7 @@ TEST(MultithreadNaturalNumbers, SumOfPrimes) {
 
     auto pm = Samples::ParallelMath();
     ASSERT_EQ(1060,pm.calculate_sum_primes(100));
-    ASSERT_EQ(76127,pm.calculate_sum_primes(1000));
+    ASSERT_EQ(454396537,pm.calculate_sum_primes(100000));
 
 }
 TEST(MultithreadNaturalNumbers, IsNotPrime) {

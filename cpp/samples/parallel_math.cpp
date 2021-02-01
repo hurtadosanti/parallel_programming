@@ -10,7 +10,7 @@ bool Samples::ParallelMath::is_prime(int number) {
     } else if (number < 2 || number % 2 == 0) {
         return false;
     } else {
-        for (int i = 2; i < number / 2; i++) {
+        for (int i = 2; i < number/2; i++) {
             if (number % i == 0) {
                 return false;
             }
