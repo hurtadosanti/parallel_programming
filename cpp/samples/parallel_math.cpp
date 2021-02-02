@@ -5,7 +5,7 @@
 #include <include/parallel_math.h>
 #include <mutex>
 
-std::atomic<unsigned int> response=0.0;
+unsigned int response=0.0;
 std::mutex lock;
 
 void primes_sum(const size_t size,const size_t batch, size_t num_workers, int i) {
@@ -46,7 +46,7 @@ unsigned int Samples::ParallelMath::calculate_sum_primes(const size_t size) {
     for(auto &w:workers){
         w.join();
     }
-    return response.load();
+    return response;
 }
 
 
