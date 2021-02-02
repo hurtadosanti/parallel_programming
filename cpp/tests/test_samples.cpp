@@ -14,13 +14,18 @@ TEST(MultithreadNaturalNumbers, IsPrime) {
     ASSERT_TRUE(pm.is_prime(7919));
 }
 
-TEST(MultithreadNaturalNumbers, SumOfPrimes) {
+TEST(MultithreadNaturalNumbers, SumOfPrime) {
 
     auto pm = Samples::ParallelMath();
     ASSERT_EQ(1060,pm.calculate_sum_primes(100));
-    ASSERT_EQ(454396537,pm.calculate_sum_primes(100000));
 
 }
+TEST(MultithreadNaturalNumbers, SumOfLargePrime) {
+
+    auto pm = Samples::ParallelMath();
+    ASSERT_EQ(454396537,pm.calculate_sum_primes(100000));
+}
+
 TEST(MultithreadNaturalNumbers, IsNotPrime) {
 
     auto pm = Samples::ParallelMath();
