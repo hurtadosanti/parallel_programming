@@ -5,14 +5,13 @@
 #include <benchmark/benchmark.h>
 #include "include/parallel_math.h"
 
-void BM_empty(benchmark::State& state) {
+void BM_multi_thread_sum_primes_to_one_hundred(benchmark::State& state) {
     for (auto _ : state) {
-        benchmark::DoNotOptimize(state.iterations());
+        auto pm = Samples::ParallelMath();
+        pm.calculate_sum_primes(10000);
     }
 }
 // Register the function as a benchmark
-BENCHMARK(BM_empty);
-BENCHMARK(BM_empty)->ThreadPerCpu();
-
+BENCHMARK(BM_multi_thread_sum_primes_to_one_hundred);
 // Run the benchmark
 BENCHMARK_MAIN();
