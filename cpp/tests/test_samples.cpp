@@ -23,6 +23,7 @@ TEST(MultithreadNaturalNumbers, SumOfPrime) {
 TEST(MultithreadNaturalNumbers, SumOfLargePrime) {
 
     auto pm = Samples::ParallelMath();
+    ASSERT_EQ(1060,pm.calculate_sum_primes(100));
     ASSERT_EQ(454396537,pm.calculate_sum_primes(100000));
 }
 

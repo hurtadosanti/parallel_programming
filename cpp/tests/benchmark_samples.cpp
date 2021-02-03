@@ -3,6 +3,7 @@
 //
 
 #include <benchmark/benchmark.h>
+#include "include/parallel_math.h"
 
 void BM_empty(benchmark::State& state) {
     for (auto _ : state) {
