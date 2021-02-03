@@ -20,13 +20,24 @@ TEST(MultithreadNaturalNumbers, SumOfPrime) {
     ASSERT_EQ(1060,pm.calculate_sum_primes(100));
 
 }
+TEST(NaturalNumbers, SumOfPrime) {
+
+    auto pm = Samples::ParallelMath();
+    ASSERT_EQ(1060,pm.calculate_sum_primes_sl(100));
+
+}
 TEST(MultithreadNaturalNumbers, SumOfLargePrime) {
 
     auto pm = Samples::ParallelMath();
     ASSERT_EQ(1060,pm.calculate_sum_primes(100));
     ASSERT_EQ(454396537,pm.calculate_sum_primes(100000));
 }
+TEST(NaturalNumbers, SumOfLargePrime) {
 
+    auto pm = Samples::ParallelMath();
+    ASSERT_EQ(1060,pm.calculate_sum_primes_sl(100));
+    ASSERT_EQ(454396537,pm.calculate_sum_primes_sl(100000));
+}
 TEST(MultithreadNaturalNumbers, IsNotPrime) {
 
     auto pm = Samples::ParallelMath();

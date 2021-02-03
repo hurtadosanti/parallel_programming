@@ -49,4 +49,14 @@ unsigned int Samples::ParallelMath::calculate_sum_primes(const size_t size) {
     return response;
 }
 
+unsigned int Samples::ParallelMath::calculate_sum_primes_sl(const size_t size) {
+    auto result = 0;
+    for(auto i =0; i<size;++i){
+        if (is_prime(i)){
+            result+=i;
+        }
+    }
+    return result;
+}
+
 
