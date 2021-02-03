@@ -5,11 +5,11 @@
 #include <include/parallel_math.h>
 #include <mutex>
 
-unsigned int response=0.0;
+unsigned int response=0;
 std::mutex lock;
 
 void primes_sum(const size_t size,const size_t batch, size_t num_workers, int i) {
-    for(int p;p<batch;++p){
+    for(int p=0;p<batch;++p){
         auto counter = i + p * num_workers;
         if (counter < size && Samples::ParallelMath::is_prime(counter)) {
             lock.lock();
@@ -35,7 +35,7 @@ bool Samples::ParallelMath::is_prime(int number) {
 }
 
 unsigned int Samples::ParallelMath::calculate_sum_primes(const size_t size) {
-    response=0.0;
+    response=0;
     size_t num_workers = std::thread::hardware_concurrency();
     int reminder = (size % num_workers == 0) ? 0 : 1;
     size_t loop = (size / num_workers + reminder);
