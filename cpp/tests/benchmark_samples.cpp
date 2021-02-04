@@ -4,21 +4,25 @@
 
 #include <benchmark/benchmark.h>
 #include "include/parallel_math.h"
+#include "include/serial_math.h"
 
-void BM_multi_thread_sum_primes_to_one_thousand(benchmark::State& state) {
+void BM_multi_thread_sum_primes(benchmark::State& state) {
+    auto n = state.range(0);
+    auto pm = Samples::ParallelMath();
     for (auto _ : state) {
-        auto pm = Samples::ParallelMath();
-        pm.calculate_sum_primes(1000);
+        benchmark::DoNotOptimize(pm.calculate_sum_primes(n*1000));
     }
 }
-void BM_multi_sum_primes_to_one_thousand(benchmark::State& state) {
+void BM_serial_sum_primes(benchmark::State& state) {
+    auto n = state.range(0);
+    auto pm = Samples::SerialMath();
     for (auto _ : state) {
-        auto pm = Samples::ParallelMath();
-        pm.calculate_sum_primes_sl(1000);
+        benchmark::DoNotOptimize(pm.calculate_sum_primes(n*1000));
     }
 }
+
 // Register the function as a benchmark
-BENCHMARK(BM_multi_thread_sum_primes_to_one_thousand);
-BENCHMARK(BM_multi_sum_primes_to_one_thousand);
+BENCHMARK(BM_multi_thread_sum_primes)->RangeMultiplier(2)->Range(64, 256);
+BENCHMARK(BM_serial_sum_primes)->RangeMultiplier(2)->Range(64, 256);
 // Run the benchmark
 BENCHMARK_MAIN();

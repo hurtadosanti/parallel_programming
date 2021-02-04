@@ -57,10 +57,10 @@ void parallel_worker(long ** A, size_t num_rows_a, size_t num_cols_a,
 
 int main() {
     const int NUM_EVAL_RUNS = 100;
-    const size_t NUM_ROWS_A = 10;
-    const size_t NUM_COLS_A = 10;
+    const size_t NUM_ROWS_A = 256;
+    const size_t NUM_COLS_A = 256;
     const size_t NUM_ROWS_B = NUM_COLS_A;
-    const size_t NUM_COLS_B = 10;
+    const size_t NUM_COLS_B = 256;
 
     // intialize A with values in range 1 to 100
     long ** A = (long **)malloc(NUM_ROWS_A * sizeof(long *));

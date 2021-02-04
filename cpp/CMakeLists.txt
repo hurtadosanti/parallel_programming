@@ -13,8 +13,11 @@ file(GLOB samples_SRC
 add_library(${PROJECT_NAME}_recipes ${recipes_SRC})
 target_link_libraries(${PROJECT_NAME}_recipes pthread)
 
-add_library(${PROJECT_NAME}_samples ${samples_SRC} include/parallel_math.h
+add_library(${PROJECT_NAME}_samples ${samples_SRC}
+        include/parallel_math.h
+        include/serial_math.h
         )
+
 target_link_libraries(${PROJECT_NAME}_samples pthread)
 
 add_executable(matrix_multiply samples/matrix_multiply.cpp)

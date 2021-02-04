@@ -3,6 +3,7 @@
 //
 #include <gtest/gtest.h>
 #include "include/parallel_math.h"
+#include "include/serial_math.h"
 
 TEST(MultithreadNaturalNumbers, IsPrime) {
 
@@ -20,10 +21,10 @@ TEST(MultithreadNaturalNumbers, SumOfPrime) {
     ASSERT_EQ(1060,pm.calculate_sum_primes(100));
 
 }
-TEST(NaturalNumbers, SumOfPrime) {
+TEST(SerialNaturalNumbers, SumOfPrime) {
 
-    auto pm = Samples::ParallelMath();
-    ASSERT_EQ(1060,pm.calculate_sum_primes_sl(100));
+    auto pm = Samples::SerialMath();
+    ASSERT_EQ(1060,pm.calculate_sum_primes(100));
 
 }
 TEST(MultithreadNaturalNumbers, SumOfLargePrime) {
@@ -32,12 +33,13 @@ TEST(MultithreadNaturalNumbers, SumOfLargePrime) {
     ASSERT_EQ(1060,pm.calculate_sum_primes(100));
     ASSERT_EQ(454396537,pm.calculate_sum_primes(100000));
 }
-TEST(NaturalNumbers, SumOfLargePrime) {
+TEST(SerialNaturalNumbers, SumOfLargePrime) {
 
-    auto pm = Samples::ParallelMath();
-    ASSERT_EQ(1060,pm.calculate_sum_primes_sl(100));
-    ASSERT_EQ(454396537,pm.calculate_sum_primes_sl(100000));
+    auto pm = Samples::SerialMath();
+    ASSERT_EQ(1060,pm.calculate_sum_primes(100));
+    ASSERT_EQ(454396537,pm.calculate_sum_primes(100000));
 }
+
 TEST(MultithreadNaturalNumbers, IsNotPrime) {
 
     auto pm = Samples::ParallelMath();

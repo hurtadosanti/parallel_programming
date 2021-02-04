@@ -10,25 +10,14 @@
 #include <atomic>
 namespace Samples {
     class ParallelMath {
-    private:
-        std::vector<unsigned int> result;
     public:
-
-        size_t size() { return result.size(); };
-
-        std::vector<unsigned int>::iterator begin() { return result.begin(); };
-
-        std::vector<unsigned int>::iterator end() { return result.end(); };
-
-        unsigned int get(size_t position);
-
         static bool is_prime(int number);
 
         static unsigned int calculate_sum_primes(const size_t size);
 
-        static unsigned int calculate_sum_primes_sl(const size_t size);
-
-        void sum(const std::vector<unsigned int> &a, const std::vector<unsigned int> &b);
+        static void matrix_multiply(long ** A, size_t num_rows_a, size_t num_cols_a,
+                                    long ** B, size_t num_rows_b, size_t num_cols_b,
+                                    long ** C);
     };
 }
 
