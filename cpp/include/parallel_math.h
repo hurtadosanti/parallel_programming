@@ -24,9 +24,9 @@ namespace Samples {
 
         static bool is_prime(int number);
 
-        unsigned int calculate_sum_primes(const size_t size);
+        static unsigned int calculate_sum_primes(const size_t size);
 
-        unsigned int calculate_sum_primes_sl(const size_t size);
+        static unsigned int calculate_sum_primes_sl(const size_t size);
 
         void sum(const std::vector<unsigned int> &a, const std::vector<unsigned int> &b);
     };
