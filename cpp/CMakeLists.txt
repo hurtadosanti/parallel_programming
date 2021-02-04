@@ -17,5 +17,9 @@ add_library(${PROJECT_NAME}_samples ${samples_SRC} include/parallel_math.h
         )
 target_link_libraries(${PROJECT_NAME}_samples pthread)
 
+add_executable(matrix_multiply samples/matrix_multiply.cpp)
+target_link_libraries(matrix_multiply pthread)
+
+
 add_subdirectory(tests)
 enable_testing()
