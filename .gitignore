@@ -1,3 +1,6 @@
 **/.idea/**
 **/cmake**
-
+**/build/**
+.vscode/**
+**/Testing/Temporary/**
+log/**

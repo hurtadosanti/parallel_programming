@@ -11,3 +11,12 @@ target_link_libraries(benchmark_samples benchmark::benchmark parallel_programmin
 
 add_executable(test_samples test_samples.cpp)
 target_link_libraries(test_samples ${GTEST_LIBRARIES} pthread parallel_programming_samples)
+add_test(
+        NAME test_samples
+        COMMAND $<TARGET_FILE:test_samples>
+)
+
+install(TARGETS benchmark_samples DESTINATION parallel_programming/tests)
+install(TARGETS test_samples DESTINATION parallel_programming/tests)
+include(CPack)
+enable_testing()

@@ -22,7 +22,14 @@ target_link_libraries(${PROJECT_NAME}_samples pthread)
 
 add_executable(matrix_multiply samples/matrix_multiply.cpp)
 target_link_libraries(matrix_multiply pthread)
-
+install(TARGETS matrix_multiply DESTINATION ${PROJECT_NAME})
 
 add_subdirectory(tests)
 enable_testing()
+
+set(CPACK_GENERATOR "TGZ")
+set(CPACP_DEBIAN_PACKAGE_MAINTAINER "Santiago Hurtado")
+
+include(CPack)
+
+
