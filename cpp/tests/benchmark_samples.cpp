@@ -25,9 +25,9 @@ void BM_serial_matrix_multiplication(benchmark::State& state){
     long ** A = nullptr;
     long ** B = nullptr;
     long ** result = nullptr;
-    Samples::ParallelMath::init_matrix(size, A, B, result);
+    Samples::SerialMath::init_matrix(size, A, B, result);
     for (auto _ : state) {
-        Samples::ParallelMath::matrix_multiply(A, size, size, B, size, size, result);
+        Samples::SerialMath::matrix_multiply(A, size, size, B, size, size, result);
     }
     for (size_t i=0; i<size; i++) {
         free(result[i]);
@@ -40,9 +40,9 @@ void BM_parallel_matrix_multiplication(benchmark::State& state){
     long ** A = nullptr;
     long ** B = nullptr;
     long ** result = nullptr;
-    Samples::SerialMath::init_matrix(size, A, B, result);
+    Samples::ParallelMath::init_matrix(size, A, B, result);
     for (auto _ : state) {
-        Samples::SerialMath::matrix_multiply(A, size, size, B, size, size, result);
+        Samples::ParallelMath::matrix_multiply(A, size, size, B, size, size, result);
     }
     for (size_t i=0; i<size; i++) {
         free(result[i]);
