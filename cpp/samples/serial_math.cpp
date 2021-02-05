@@ -1,6 +1,7 @@
 //
 // Created by shurtado on 04.02.21.
 //
+#include <cstdlib>
 #include "serial_math.h"
 
 namespace Samples {
@@ -39,5 +40,34 @@ namespace Samples {
             }
         }
         return true;
+    }
+    void SerialMath::init_matrix(const size_t size, long **&A, long **&B, long **&result) {
+        A= (long **)malloc(size * sizeof(long *));
+        B= (long **)malloc(size * sizeof(long *));
+        result= (long **)malloc(size * sizeof(long *));
+        for (size_t i=0; i<size; i++) {
+            A[i] = (long *)malloc(size * sizeof(long));
+            if (A[i] == nullptr) {
+                exit(2);
+            }
+            for (size_t j=0; j<size; j++) {
+                A[i][j] = 1;
+            }
+        }
+        for (size_t i=0; i<size; i++) {
+            B[i] = (long *)malloc(size * sizeof(long));
+            if (B[i] == nullptr) {
+                exit(2);
+            }
+            for (size_t j=0; j<size; j++) {
+                B[i][j] = 1;
+            }
+        }
+        for (size_t i=0; i<size; i++) {
+            result[i] = (long *)malloc(size * sizeof(long));
+            if (result[i] == nullptr) {
+                exit(2);
+            }
+        }
     }
 }

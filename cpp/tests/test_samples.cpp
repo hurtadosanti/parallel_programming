@@ -49,101 +49,47 @@ TEST(MultithreadNaturalNumbers, IsNotPrime) {
     ASSERT_FALSE(pm.is_prime(7920));
 }
 TEST(SerialAlgebra,MatrixMultiplication){
+    // Setup
     const size_t size=5;
-    long ** A = (long **)malloc(size * sizeof(long *));
-    if (A == nullptr) {
-        exit(2);
-    }
-    for (size_t i=0; i<size; i++) {
-        A[i] = (long *)malloc(size * sizeof(long));
-        if (A[i] == nullptr) {
-            exit(2);
-        }
-        for (size_t j=0; j<size; j++) {
-            A[i][j] = 1;
-        }
-    }
-    long ** B = (long **)malloc(size * sizeof(long *));
-    if (B == nullptr) {
-        exit(2);
-    }
-    for (size_t i=0; i<size; i++) {
-        B[i] = (long *)malloc(size * sizeof(long));
-        if (B[i] == nullptr) {
-            exit(2);
-        }
-        for (size_t j=0; j<size; j++) {
-            B[i][j] = 1;
-        }
-    }
-    // allocate arrays for sequential and parallel results
-    long ** sequential_result = (long **)malloc(size * sizeof(long *));
-    if (sequential_result == nullptr) {
-        exit(2);
-    }
-    for (size_t i=0; i<size; i++) {
-        sequential_result[i] = (long *)malloc(size * sizeof(long));
-        if (sequential_result[i] == nullptr) {
-            exit(2);
-        }
-    }
+    long ** A = nullptr;
+    long ** B = nullptr;
+    long ** sequential_result = nullptr;
+    Samples::SerialMath::init_matrix(size,A,B,sequential_result);
+    // Act
     Samples::SerialMath::matrix_multiply(A, size, size, B, size, size, sequential_result);
+    // Serialize
     for (size_t i=0; i<size; i++) {
         for (size_t j=0; j<size; j++) {
             ASSERT_EQ(size,sequential_result[i][j]);
         }
     }
+    // clean
     for (size_t i=0; i<size; i++) {
         free(sequential_result[i]);
+        free(A[i]);
+        free(B[i]);
     }
 }
 TEST(MultithreadAlgebra,MatrixMultiplication){
+    // Setup
     const size_t size=5;
-    long ** A = (long **)malloc(size * sizeof(long *));
-    if (A == nullptr) {
-        exit(2);
-    }
-    for (size_t i=0; i<size; i++) {
-        A[i] = (long *)malloc(size * sizeof(long));
-        if (A[i] == nullptr) {
-            exit(2);
-        }
-        for (size_t j=0; j<size; j++) {
-            A[i][j] = 1;
-        }
-    }
-    long ** B = (long **)malloc(size * sizeof(long *));
-    if (B == nullptr) {
-        exit(2);
-    }
-    for (size_t i=0; i<size; i++) {
-        B[i] = (long *)malloc(size * sizeof(long));
-        if (B[i] == nullptr) {
-            exit(2);
-        }
-        for (size_t j=0; j<size; j++) {
-            B[i][j] = 1;
-        }
-    }
-    // allocate arrays for sequential and parallel results
-    long ** sequential_result = (long **)malloc(size * sizeof(long *));
-    if (sequential_result == nullptr) {
-        exit(2);
-    }
-    for (size_t i=0; i<size; i++) {
-        sequential_result[i] = (long *)malloc(size * sizeof(long));
-        if (sequential_result[i] == nullptr) {
-            exit(2);
-        }
-    }
+    long ** A = nullptr;
+    long ** B = nullptr;
+    long ** sequential_result = nullptr;
+    Samples::ParallelMath::init_matrix(size,A,B,sequential_result);
+    // Act
     Samples::ParallelMath::matrix_multiply(A, size, size, B, size, size, sequential_result);
+    // Serialize
     for (size_t i=0; i<size; i++) {
         for (size_t j=0; j<size; j++) {
             ASSERT_EQ(size,sequential_result[i][j]);
         }
     }
+    // clean
     for (size_t i=0; i<size; i++) {
         free(sequential_result[i]);
+        free(A[i]);
+        free(B[i]);
     }
 }
 

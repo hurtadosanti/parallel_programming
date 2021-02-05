@@ -19,6 +19,9 @@ namespace Samples {
         static void matrix_multiply(long ** A, size_t num_rows_a, size_t num_cols_a,
                                     long ** B, size_t num_rows_b, size_t num_cols_b,
                                     long ** C);
+
+        static void init_matrix(const size_t size, long **&A, long **&B,
+                    long **&sequential_result);
     };
 }
 

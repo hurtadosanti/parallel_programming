@@ -71,6 +71,36 @@ namespace Samples {
         }
     }
 
+    void ParallelMath::init_matrix(const size_t size, long **&A, long **&B, long **&sequential_result) {
+        A= (long **)malloc(size * sizeof(long *));
+        B= (long **)malloc(size * sizeof(long *));
+        sequential_result= (long **)malloc(size * sizeof(long *));
+        for (size_t i=0; i<size; i++) {
+            A[i] = (long *)malloc(size * sizeof(long));
+            if (A[i] == nullptr) {
+                exit(2);
+            }
+            for (size_t j=0; j<size; j++) {
+                A[i][j] = 1;
+            }
+        }
+        for (size_t i=0; i<size; i++) {
+            B[i] = (long *)malloc(size * sizeof(long));
+            if (B[i] == nullptr) {
+                exit(2);
+            }
+            for (size_t j=0; j<size; j++) {
+                B[i][j] = 1;
+            }
+        }
+        for (size_t i=0; i<size; i++) {
+            sequential_result[i] = (long *)malloc(size * sizeof(long));
+            if (sequential_result[i] == nullptr) {
+                exit(2);
+            }
+        }
+    }
+
 
     void parallel_worker(long ** A, size_t num_rows_a, size_t num_cols_a,
                          long ** B, size_t num_rows_b, size_t num_cols_b,
