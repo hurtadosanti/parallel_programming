@@ -8,6 +8,7 @@
 #include <thread>
 #include <iostream>
 #include <atomic>
+#include <cmath>
 namespace Samples {
     class ParallelMath {
     public:

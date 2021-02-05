@@ -97,6 +97,55 @@ TEST(SerialAlgebra,MatrixMultiplication){
         free(sequential_result[i]);
     }
 }
+TEST(MultithreadAlgebra,MatrixMultiplication){
+    const size_t size=5;
+    long ** A = (long **)malloc(size * sizeof(long *));
+    if (A == nullptr) {
+        exit(2);
+    }
+    for (size_t i=0; i<size; i++) {
+        A[i] = (long *)malloc(size * sizeof(long));
+        if (A[i] == nullptr) {
+            exit(2);
+        }
+        for (size_t j=0; j<size; j++) {
+            A[i][j] = 1;
+        }
+    }
+    long ** B = (long **)malloc(size * sizeof(long *));
+    if (B == nullptr) {
+        exit(2);
+    }
+    for (size_t i=0; i<size; i++) {
+        B[i] = (long *)malloc(size * sizeof(long));
+        if (B[i] == nullptr) {
+            exit(2);
+        }
+        for (size_t j=0; j<size; j++) {
+            B[i][j] = 1;
+        }
+    }
+    // allocate arrays for sequential and parallel results
+    long ** sequential_result = (long **)malloc(size * sizeof(long *));
+    if (sequential_result == nullptr) {
+        exit(2);
+    }
+    for (size_t i=0; i<size; i++) {
+        sequential_result[i] = (long *)malloc(size * sizeof(long));
+        if (sequential_result[i] == nullptr) {
+            exit(2);
+        }
+    }
+    Samples::ParallelMath::matrix_multiply(A, size, size, B, size, size, sequential_result);
+    for (size_t i=0; i<size; i++) {
+        for (size_t j=0; j<size; j++) {
+            ASSERT_EQ(size,sequential_result[i][j]);
+        }
+    }
+    for (size_t i=0; i<size; i++) {
+        free(sequential_result[i]);
+    }
+}
 
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
