@@ -1,12 +1,11 @@
-cmake_minimum_required(VERSION 3.10)
-project(parallel_math CXX CUDA)
+cmake_minimum_required(VERSION 3.16)
+project(cuda CUDA)
+
 set(CMAKE_CUDA_STANDARD 14)
-find_package(CUDA)
 
-cuda_select_nvcc_arch_flags(ARCH_FLAGS "Auto")
+add_executable(cuda main.cu)
 
-list(APPEND CUDA_NVCC_FLAGS ${ARCH_FLAGS})
-
-add_executable(${PROJECT_NAME} primes_sum.cu)
-
-set_target_properties(${PROJECT_NAME} PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
+set_target_properties(
+        cuda
+        PROPERTIES
+        CUDA_SEPARABLE_COMPILATION ON)
