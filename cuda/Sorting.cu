@@ -4,7 +4,7 @@
 
 #include "Sorting.h"
 
-std::vector<int> Sorting::cuda_sort(std::vector<int> unsorted) {
+std::vector<int> Sorting::cuda_sort(std::vector<int> &unsorted) {
     // copy to device
     thrust::device_vector<int> D(unsorted.begin(),unsorted.end());
     // Sort

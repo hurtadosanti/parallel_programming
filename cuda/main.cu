@@ -1,37 +1,19 @@
 #include <iostream>
-
+#include <random>
+#include "Sorting.h"
 
 int main() {
-    // H has storage for 4 integers
-    thrust::host_vector<int> H(4);
+    auto s = Sorting();
 
-    // initialize individual elements
-    H[0] = 49;
-    H[1] = 20;
-    H[2] = 12;
-    H[3] = 46;
-
-    // H.size() returns the size of vector H
-    std::cout << "H has size " << H.size() << std::endl;
-
-    // print contents of H
-    for(int i = 0; i < H.size(); i++)
-        std::cout << "H[" << i << "] = " << H[i] << std::endl;
-
-    // resize H
-    H.resize(2);
+    std::random_device rd;
+    std::vector<int> a(10000);
+    for (auto& d : a) {
+        d = static_cast<int>(rd());
+    }
 
 
-    std::cout << "H now has size " << H.size() << std::endl;
+    auto D = s.cuda_sort(a);
 
-    // Copy host_vector H to device_vector D
-    thrust::device_vector<int> D = H;
-
-    // elements of D can be modified
-    D[0] = 99;
-    D[1] = 88;
-
-    thrust::sort(D.begin(),D.end());
     float free_m,total_m,used_m;
 
     size_t free_t,total_t;

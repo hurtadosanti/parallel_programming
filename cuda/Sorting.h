@@ -12,7 +12,7 @@
 #include <cuda.h>
 class Sorting {
 public:
-    std::vector<int> cuda_sort(std::vector<int> unsorted);
+    std::vector<int> cuda_sort(std::vector<int> &unsorted);
 };
 
 
