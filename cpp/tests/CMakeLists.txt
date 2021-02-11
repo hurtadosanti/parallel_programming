@@ -16,7 +16,15 @@ add_test(
         COMMAND $<TARGET_FILE:test_samples>
 )
 
+add_executable(test_recipes test_recipes.cpp)
+target_link_libraries(test_recipes ${GTEST_LIBRARIES} pthread parallel_programming_recipes)
+add_test(
+        NAME test_recipes
+        COMMAND $<TARGET_FILE:test_recipes>
+)
+
 install(TARGETS benchmark_samples DESTINATION parallel_programming/tests)
 install(TARGETS test_samples DESTINATION parallel_programming/tests)
+install(TARGETS test_recipes DESTINATION parallel_programming/tests)
 include(CPack)
 enable_testing()
