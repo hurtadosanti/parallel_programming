@@ -1,6 +1,6 @@
 #include <iostream>
 #include <random>
-#include "Sorting.h"
+#include "include/Sorting.h"
 
 int main() {
     auto s = Sorting();

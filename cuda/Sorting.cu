@@ -2,7 +2,7 @@
 // Created by shurtado on 11.02.21.
 //
 
-#include "Sorting.h"
+#include "include/Sorting.h"
 
 std::vector<int> Sorting::cuda_sort(std::vector<int> &unsorted) {
     // copy to device
