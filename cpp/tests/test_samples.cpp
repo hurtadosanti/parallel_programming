@@ -48,6 +48,23 @@ TEST(MultithreadNaturalNumbers, IsNotPrime) {
     ASSERT_FALSE(pm.is_prime(70));
     ASSERT_FALSE(pm.is_prime(7920));
 }
+TEST(MultithreadNaturalNumbers, SumTo10) {
+    auto sm = Samples::ParallelMath();
+    auto values = std::vector<unsigned int>();
+    for (int i = 0; i <=10 ;++i) {
+        values.push_back(i);
+    }
+    ASSERT_EQ(55,sm.sum(values));
+}
+
+TEST(SerialNaturalNumbers, SumTo10) {
+    auto sm = Samples::SerialMath();
+    auto values = std::vector<unsigned int>();
+    for (int i = 0; i <=10 ;++i) {
+        values.push_back(i);
+    }
+    ASSERT_EQ(55,sm.sum(values));
+}
 TEST(SerialAlgebra,MatrixMultiplication){
     // Setup
     const size_t size=5;

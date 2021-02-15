@@ -20,15 +20,20 @@ add_library(${PROJECT_NAME}_samples ${samples_SRC}
         include/serial_math.h
         )
 
-target_link_libraries(${PROJECT_NAME}_samples pthread)
+target_link_libraries(${PROJECT_NAME}_samples pthread ${TBB_IMPORTED_TARGETS})
 
 add_executable(matrix_multiply samples/matrix_multiply.cpp)
 target_link_libraries(matrix_multiply pthread)
 install(TARGETS matrix_multiply DESTINATION ${PROJECT_NAME})
 
 
+
 add_executable(parallel_order recipes/parallel_ordering.cpp)
 target_link_libraries(parallel_order pthread  ${TBB_IMPORTED_TARGETS})
+
+add_executable(parallel_for_recipe recipes/parallel_for_recipe.cpp)
+target_link_libraries(parallel_for_recipe pthread  ${TBB_IMPORTED_TARGETS})
+
 
 add_subdirectory(tests)
 enable_testing()

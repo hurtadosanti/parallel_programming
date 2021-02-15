@@ -9,6 +9,8 @@
 #include <iostream>
 #include <atomic>
 #include <cmath>
+#include <algorithm>
+#include <execution>
 namespace Samples {
     class ParallelMath {
     public:
@@ -22,6 +24,8 @@ namespace Samples {
 
         static void init_matrix(const size_t size, long **&A, long **&B,
                     long **&sequential_result);
+
+        static unsigned int sum(std::vector<unsigned int> &values);
     };
 }
 

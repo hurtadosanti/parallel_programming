@@ -50,6 +50,7 @@ namespace Samples {
     }
 
 
+
     void parallel_worker(long **, size_t, size_t, long **, size_t, size_t,long **, size_t, size_t);
 
 
@@ -115,6 +116,18 @@ namespace Samples {
         }
     }
 
+    unsigned int ParallelMath::sum(std::vector<unsigned int> &values) {
+        std::atomic<unsigned int> result =0;
+        std::for_each(
+                std::execution::par,
+                values.begin(),
+                values.end(),
+                [&result](auto&& item)
+                {
+                    result+=item;
+                });
+        return result.load();
+    }
 }
 
 

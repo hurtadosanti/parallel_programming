@@ -70,4 +70,12 @@ namespace Samples {
             }
         }
     }
+
+    unsigned int SerialMath::sum(std::vector<unsigned int> &values) {
+        auto result = 0;
+        for(auto &i: values){
+            result+=i;
+        }
+        return result;
+    }
 }

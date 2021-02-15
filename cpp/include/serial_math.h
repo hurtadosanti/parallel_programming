@@ -16,6 +16,8 @@ namespace Samples {
 
         static void init_matrix(const size_t size, long **&A, long **&B,
                                 long **&result);
+
+        static unsigned int sum(std::vector<unsigned int> &values);
     };
 }
 #endif //PARALLEL_PROGRAMMING_SERIAL_MATH_H
